@@ -1,0 +1,18 @@
+{
+  "name": "jad-chambers-alerts",
+  "version": "1.0.0",
+  "description": "Automated compliance alert mailer for Law Chambers of Jai Anant Dehadrai",
+  "main": "send-alerts.js",
+  "scripts": {
+    "alert": "node send-alerts.js",
+    "test-alert": "ALERT_DAYS=999 node send-alerts.js"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.14"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}

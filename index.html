@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Law Chambers of Jai Anant Dehadrai — Case & Compliance Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cinzel:wght@400;600;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0b0d;
+  --bg2: #0e1014;
+  --surface: #111318;
+  --surface2: #171a21;
+  --surface3: #1c2029;
+  --border: #1e222e;
+  --border2: #262c3a;
+  --border3: #303848;
+  --gold: #c9a84c;
+  --gold2: #e8c97a;
+  --gold3: #f5dfa0;
+  --gold-dim: rgba(201,168,76,0.1);
+  --gold-dim2: rgba(201,168,76,0.18);
+  --crimson: #c0392b;
+  --crimson-dim: rgba(192,57,43,0.12);
+  --amber: #c87533;
+  --amber-dim: rgba(200,117,51,0.12);
+  --jade: #3a8a6e;
+  --jade-dim: rgba(58,138,110,0.12);
+  --sapphire: #2e6cb0;
+  --sapphire-dim: rgba(46,108,176,0.12);
+  --text: #e2ddd5;
+  --text2: #b8b2a8;
+  --muted: #5a6070;
+  --muted2: #7a8090;
+  --sc: #8b6ed4;
+  --hc: #3d8fcc;
+  --lc: #3a8a6e;
+  --tr: #c87533;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Cormorant Garamond', serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(ellipse 60% 40% at 20% 0%, rgba(201,168,76,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 80% 100%, rgba(139,110,212,0.03) 0%, transparent 60%);
+}
+
+/* Subtle grain texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ══ HEADER ══ */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border2);
+  padding: 0 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--border), 0 4px 24px rgba(0,0,0,0.4);
+}
+
+/* Ornamental top border */
+header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 20%, var(--gold3) 50%, var(--gold) 80%, transparent 100%);
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-seal {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  background: var(--gold-dim2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.08), inset 0 1px 0 rgba(201,168,76,0.2);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.logo-primary {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--gold2);
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.logo-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--muted2);
+  letter-spacing: 0.05em;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alert-indicator {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--crimson-dim);
+  border: 1px solid rgba(192,57,43,0.35);
+  border-radius: 3px;
+  padding: 6px 14px;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.62rem;
+  color: #e06050;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.06em;
+}
+
+.alert-indicator:hover { background: rgba(192,57,43,0.18); border-color: rgba(192,57,43,0.55); }
+
+.alert-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #e06050;
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(192,57,43,0.4); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(192,57,43,0); }
+}
+
+/* ══ MAIN ══ */
+.main { padding: 28px 36px; position: relative; z-index: 1; }
+
+/* ══ CHAMBER HEADER BAND ══ */
+.chamber-band {
+  text-align: center;
+  padding: 20px 0 24px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border2);
+  position: relative;
+}
+
+.chamber-band::before, .chamber-band::after {
+  content: '✦';
+  position: absolute;
+  bottom: -9px;
+  color: var(--gold);
+  font-size: 0.7rem;
+  background: var(--bg);
+  padding: 0 8px;
+}
+.chamber-band::before { left: 50%; transform: translateX(-50%); }
+
+.chamber-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold2);
+  letter-spacing: 0.12em;
+  margin-bottom: 4px;
+}
+
+.chamber-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--muted2);
+  letter-spacing: 0.04em;
+}
+
+/* ══ SUMMARY CARDS ══ */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.summary-card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 18px 22px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.25s, transform 0.2s;
+}
+
+.summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+
+.summary-card.sc::before { background: linear-gradient(90deg, var(--sc), transparent); }
+.summary-card.hc::before { background: linear-gradient(90deg, var(--hc), transparent); }
+.summary-card.lc::before { background: linear-gradient(90deg, var(--lc), transparent); }
+.summary-card.tr::before { background: linear-gradient(90deg, var(--tr), transparent); }
+
+.summary-card:hover { border-color: var(--border3); transform: translateY(-1px); }
+
+.summary-court-label {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.summary-num {
+  font-family: 'Cinzel', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.summary-card.sc .summary-num { color: var(--sc); }
+.summary-card.hc .summary-num { color: var(--hc); }
+.summary-card.lc .summary-num { color: var(--lc); }
+.summary-card.tr .summary-num { color: var(--tr); }
+
+.summary-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text2);
+  margin-top: 6px;
+}
+
+.summary-alert {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.6rem;
+  color: #e06050;
+  margin-top: 4px;
+  min-height: 14px;
+}
+
+/* ══ ALERT PANEL ══ */
+.alert-panel {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 22px 28px;
+  margin-bottom: 28px;
+  display: none;
+}
+.alert-panel.open { display: block; }
+
+.alert-panel-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gold2);
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.panel-divider {
+  border: none;
+  border-top: 1px solid var(--border2);
+  margin: 18px 0;
+}
+
+.alert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+.alert-section {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 18px;
+}
+
+.alert-section-title {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border2);
+}
+
+.form-group { margin-bottom: 12px; }
+
+label {
+  display: block;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted2);
+  margin-bottom: 5px;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], select {
+  width: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  padding: 8px 12px;
+  color: var(--text);
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.76rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(201,168,76,0.08);
+}
+
+.toggle-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.toggle-label { font-size: 0.85rem; font-style: italic; color: var(--text2); }
+
+.toggle { position: relative; width: 36px; height: 20px; cursor: pointer; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.toggle-slider { position: absolute; inset: 0; background: var(--border2); border-radius: 20px; transition: 0.3s; }
+.toggle-slider::before { content: ''; position: absolute; left: 3px; top: 3px; width: 14px; height: 14px; border-radius: 50%; background: var(--muted); transition: 0.3s; }
+.toggle input:checked + .toggle-slider { background: var(--gold-dim2); border: 1px solid var(--gold); }
+.toggle input:checked + .toggle-slider::before { transform: translateX(16px); background: var(--gold); }
+
+.btn-save-alert {
+  background: var(--gold-dim);
+  border: 1px solid var(--gold);
+  color: var(--gold2);
+  padding: 9px 22px;
+  border-radius: 3px;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 14px;
+  transition: all 0.2s;
+}
+
+.btn-save-alert:hover { background: var(--gold); color: var(--bg); }
+
+/* GitHub Automation Notice */
+.github-notice {
+  background: linear-gradient(135deg, rgba(30,35,50,0.8), rgba(20,25,38,0.9));
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 4px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+
+.github-notice-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  color: var(--gold2);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.github-notice-body {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+.github-notice-body code {
+  font-family: 'Source Code Pro', monospace;
+  font-style: normal;
+  font-size: 0.72rem;
+  background: rgba(201,168,76,0.1);
+  color: var(--gold3);
+  padding: 1px 5px;
+  border-radius: 2px;
+  border: 1px solid rgba(201,168,76,0.2);
+}
+
+.step-list {
+  margin-top: 8px;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: steps;
+}
+
+.step-list li {
+  counter-increment: steps;
+  padding-left: 22px;
+  position: relative;
+  margin-bottom: 5px;
+  font-size: 0.8rem;
+  color: var(--text2);
+  font-style: italic;
+}
+
+.step-list li::before {
+  content: counter(steps);
+  position: absolute;
+  left: 0;
+  font-family: 'Source Code Pro', monospace;
+  font-style: normal;
+  font-size: 0.65rem;
+  color: var(--gold);
+  background: var(--gold-dim);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 1px;
+}
+
+/* Real-time sharing notice */
+.sharing-notice {
+  background: rgba(46,108,176,0.08);
+  border: 1px solid rgba(46,108,176,0.25);
+  border-radius: 4px;
+  padding: 12px 14px;
+  margin-top: 10px;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: #6ea8d8;
+  line-height: 1.6;
+}
+
+/* ══ COURT TABS ══ */
+.court-tabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 22px;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.court-tab {
+  flex: 1;
+  padding: 9px 18px;
+  border: none;
+  border-radius: 3px;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: transparent;
+  color: var(--muted);
+  transition: all 0.2s;
+}
+
+.court-tab.active { color: var(--text); }
+.court-tab.active.sc-tab { background: rgba(139,110,212,0.15); color: #b09aea; }
+.court-tab.active.hc-tab { background: rgba(61,143,204,0.15); color: #7ab8e8; }
+.court-tab.active.lc-tab { background: rgba(58,138,110,0.15); color: #65c4a0; }
+.court-tab.active.tr-tab { background: rgba(200,117,51,0.15); color: #e8a870; }
+
+.tab-count {
+  display: inline-block;
+  min-width: 18px;
+  height: 17px;
+  border-radius: 9px;
+  font-size: 0.58rem;
+  line-height: 17px;
+  text-align: center;
+  padding: 0 5px;
+  margin-left: 6px;
+  background: var(--border2);
+  color: var(--muted2);
+}
+
+.court-tab.active.sc-tab .tab-count { background: rgba(139,110,212,0.25); color: #b09aea; }
+.court-tab.active.hc-tab .tab-count { background: rgba(61,143,204,0.25); color: #7ab8e8; }
+.court-tab.active.lc-tab .tab-count { background: rgba(58,138,110,0.25); color: #65c4a0; }
+.court-tab.active.tr-tab .tab-count { background: rgba(200,117,51,0.25); color: #e8a870; }
+
+/* ══ COURT SECTION ══ */
+.court-section { display: none; }
+.court-section.active { display: block; }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.court-insignia {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  border: 1px solid;
+}
+
+.section-actions { display: flex; gap: 8px; }
+
+.btn {
+  padding: 7px 16px;
+  border-radius: 3px;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--muted2);
+  transition: all 0.15s;
+}
+
+.btn:hover { border-color: var(--gold); color: var(--gold); }
+
+.btn-primary {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+  color: var(--gold2);
+}
+
+.btn-primary:hover { background: var(--gold); color: var(--bg); }
+
+/* ══ TABLE ══ */
+.table-wrapper {
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+
+thead tr { background: var(--surface2); border-bottom: 1px solid var(--border2); }
+
+thead th {
+  padding: 11px 14px;
+  text-align: left;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.56rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--surface2); }
+
+tbody td { padding: 11px 14px; color: var(--text); vertical-align: middle; }
+
+.sr-no {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.65rem;
+  color: var(--muted);
+  width: 40px;
+}
+
+.case-title { font-weight: 500; min-width: 180px; max-width: 240px; }
+.case-title-main { color: var(--text); font-size: 0.85rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+.case-title-sub { color: var(--muted2); font-size: 0.65rem; font-family: 'Source Code Pro', monospace; margin-top: 2px; }
+
+.date-cell { font-family: 'Source Code Pro', monospace; font-size: 0.7rem; white-space: nowrap; }
+
+.date-chip {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 2px;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.66rem;
+  white-space: nowrap;
+}
+
+.date-chip.overdue { background: var(--crimson-dim); color: #e07060; border: 1px solid rgba(192,57,43,0.3); }
+.date-chip.soon { background: var(--amber-dim); color: #d4945a; border: 1px solid rgba(200,117,51,0.3); }
+.date-chip.ok { background: var(--jade-dim); color: #5ab090; border: 1px solid rgba(58,138,110,0.3); }
+.date-chip.neutral { background: var(--surface2); color: var(--muted2); border: 1px solid var(--border2); }
+
+.compliance-text { max-width: 210px; font-size: 0.82rem; color: var(--text2); line-height: 1.45; font-style: italic; }
+
+.status-select {
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.64rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  cursor: pointer;
+  outline: none;
+  min-width: 122px;
+  transition: border-color 0.2s;
+}
+
+.status-pending { border-color: rgba(200,117,51,0.45); background: var(--amber-dim); color: #d4945a; }
+.status-complied { border-color: rgba(58,138,110,0.45); background: var(--jade-dim); color: #5ab090; }
+.status-overdue { border-color: rgba(192,57,43,0.45); background: var(--crimson-dim); color: #e07060; }
+.status-partial { border-color: rgba(46,108,176,0.45); background: var(--sapphire-dim); color: #6898cc; }
+
+.action-btns { display: flex; gap: 4px; white-space: nowrap; }
+
+.icon-btn {
+  width: 28px; height: 28px;
+  border-radius: 3px;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: all 0.15s;
+}
+
+.icon-btn:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+.icon-btn.del:hover { border-color: #c0392b; color: #e07060; background: var(--crimson-dim); }
+
+.alert-row { background: rgba(192,57,43,0.05) !important; border-left: 2px solid var(--crimson) !important; }
+.alert-row-amber { background: rgba(200,117,51,0.05) !important; border-left: 2px solid var(--amber) !important; }
+
+/* ══ MODAL ══ */
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.78);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+}
+.modal-backdrop.open { display: flex; }
+
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 5px;
+  width: 580px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--border);
+  animation: slideUp 0.22s ease;
+}
+.modal::before {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold3), var(--gold), transparent);
+  border-radius: 5px 5px 0 0;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+  padding: 18px 24px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gold2);
+  letter-spacing: 0.1em;
+}
+
+.modal-close {
+  width: 28px; height: 28px;
+  border-radius: 3px;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.modal-close:hover { color: #e07060; border-color: #c0392b; }
+
+.modal-body { padding: 20px 24px; }
+.modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.modal-footer {
+  padding: 14px 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+textarea.modal-ta {
+  width: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  padding: 8px 12px;
+  color: var(--text);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.88rem;
+  resize: vertical;
+  min-height: 72px;
+  outline: none;
+  grid-column: 1 / -1;
+  transition: border-color 0.2s;
+}
+textarea.modal-ta:focus { border-color: var(--gold); }
+
+/* ══ ALERTS DRAWER ══ */
+.alerts-drawer {
+  position: fixed;
+  right: 0; top: 76px; bottom: 0;
+  width: 350px;
+  background: var(--surface);
+  border-left: 1px solid var(--border2);
+  z-index: 150;
+  display: none;
+  flex-direction: column;
+  box-shadow: -12px 0 40px rgba(0,0,0,0.4);
+  animation: slideIn 0.22s ease;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.alerts-drawer.open { display: flex; }
+
+.drawer-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface2);
+}
+
+.drawer-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gold2);
+  letter-spacing: 0.1em;
+}
+
+#alertCount {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.62rem;
+  color: var(--muted2);
+  margin-left: 8px;
+}
+
+.drawer-body { flex: 1; overflow-y: auto; padding: 12px; }
+
+.alert-item {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+}
+
+.alert-item.critical { border-left: 2px solid #c0392b; }
+.alert-item.warning { border-left: 2px solid var(--amber); }
+
+.alert-item-title { font-size: 0.88rem; font-weight: 600; font-family: 'Cormorant Garamond', serif; margin-bottom: 4px; }
+.alert-item-meta { font-family: 'Source Code Pro', monospace; font-size: 0.6rem; color: var(--muted2); line-height: 1.7; }
+
+.alert-type-chip {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 2px;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.56rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.chip-ndoh { background: rgba(46,108,176,0.15); color: #6898cc; }
+.chip-due { background: rgba(192,57,43,0.15); color: #e07060; }
+.chip-soon { background: rgba(200,117,51,0.15); color: #d4945a; }
+
+.send-btns { display: flex; gap: 6px; margin-top: 10px; }
+
+.btn-send {
+  flex: 1; padding: 5px;
+  border-radius: 2px;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--muted2);
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.58rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+}
+
+.btn-send.email:hover { border-color: var(--sapphire); color: #6898cc; background: var(--sapphire-dim); }
+.btn-send.whatsapp:hover { border-color: #3a8a6e; color: #65c4a0; background: var(--jade-dim); }
+
+.empty-state {
+  text-align: center;
+  padding: 50px 20px;
+  color: var(--muted);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.8;
+}
+
+/* ══ TOAST ══ */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  padding: 10px 22px;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.68rem;
+  color: var(--text);
+  z-index: 300;
+  transition: transform 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  letter-spacing: 0.04em;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+.toast.success { border-color: rgba(58,138,110,0.5); color: #65c4a0; }
+.toast.error { border-color: rgba(192,57,43,0.5); color: #e07060; }
+
+/* ══ ORNAMENTAL RULE ══ */
+.orn-rule {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+  color: var(--gold);
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+}
+.orn-rule::before, .orn-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border2));
+}
+.orn-rule::after { background: linear-gradient(90deg, var(--border2), transparent); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+@media (max-width: 900px) {
+  .summary-grid { grid-template-columns: 1fr 1fr; }
+  .main { padding: 16px; }
+  header { padding: 0 16px; }
+  .alert-grid { grid-template-columns: 1fr; }
+  .modal-grid { grid-template-columns: 1fr; }
+  .alerts-drawer { width: 100%; }
+  .chamber-band { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="logo-area">
+    <div class="logo-seal">⚖</div>
+    <div class="logo-text">
+      <div class="logo-primary">Law Chambers of Jai Anant Dehadrai</div>
+      <div class="logo-sub">Case & Compliance Management System</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="alert-indicator" onclick="toggleDrawer()" id="alertIndicator">
+      <div class="alert-dot"></div>
+      <span id="alertCount">— Alerts</span>
+    </div>
+    <button class="btn btn-primary" onclick="toggleAlertPanel()">⚙ Alert Config</button>
+  </div>
+</header>
+
+<div class="main">
+
+<!-- ══ ALERT CONFIG PANEL ══ -->
+<div class="alert-panel" id="alertPanel">
+  <div class="alert-panel-title">🔔 Alert &amp; Notification Settings</div>
+
+  <div class="alert-grid">
+    <!-- Email Section -->
+    <div class="alert-section">
+      <div class="alert-section-title">📧 Email Alerts</div>
+      <div class="toggle-row">
+        <span class="toggle-label">Enable Email Alerts</span>
+        <label class="toggle"><input type="checkbox" id="emailEnabled" checked><span class="toggle-slider"></span></label>
+      </div>
+      <div class="form-group">
+        <label>Alert Email Address</label>
+        <input type="email" id="alertEmail" placeholder="jai@jadchambers.com">
+      </div>
+      <div class="form-group">
+        <label>CC Email (optional)</label>
+        <input type="email" id="ccEmail" placeholder="clerk@jadchambers.com">
+      </div>
+      <div class="form-group">
+        <label>Days Before Alert</label>
+        <select id="emailDays">
+          <option value="4" selected>4 days before</option>
+          <option value="3">3 days before</option>
+          <option value="7">7 days before</option>
+        </select>
+      </div>
+
+      <!-- GitHub Automation Guide -->
+      <div class="github-notice">
+        <div class="github-notice-title">⚙ GitHub Actions — Automated Email Setup</div>
+        <div class="github-notice-body">
+          Automate daily compliance email alerts using a <strong>GitHub Actions workflow</strong>:
+          <ol class="step-list">
+            <li>Export case data as JSON and commit to a GitHub repository</li>
+            <li>Create <code>.github/workflows/daily-alert.yml</code> with a cron schedule (<code>0 7 * * *</code>)</li>
+            <li>Write a Node.js script using <code>Nodemailer</code> + <code>SendGrid</code> or <code>Gmail SMTP</code></li>
+            <li>Store credentials as <strong>GitHub Secrets</strong> (EMAIL_USER, EMAIL_PASS, SMTP_HOST)</li>
+            <li>The workflow runs daily, checks due dates, and dispatches alert emails automatically</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- WhatsApp + Sharing Section -->
+    <div class="alert-section">
+      <div class="alert-section-title">💬 WhatsApp Alerts</div>
+      <div class="toggle-row">
+        <span class="toggle-label">Enable WhatsApp Alerts</span>
+        <label class="toggle"><input type="checkbox" id="waEnabled" checked><span class="toggle-slider"></span></label>
+      </div>
+      <div class="form-group">
+        <label>WhatsApp Number (with country code)</label>
+        <input type="tel" id="waNumber" placeholder="+919876543210">
+      </div>
+      <div class="form-group">
+        <label>Additional Number (optional)</label>
+        <input type="tel" id="waNumber2" placeholder="+919876543211">
+      </div>
+      <div class="form-group">
+        <label>Days Before Alert</label>
+        <select id="waDays">
+          <option value="4" selected>4 days before</option>
+          <option value="3">3 days before</option>
+          <option value="7">7 days before</option>
+        </select>
+      </div>
+
+      <!-- Real-time Sharing Notice -->
+      <div class="sharing-notice">
+        <strong style="font-style:normal; color:#90c4f0;">🔗 Real-Time Sharing</strong><br>
+        Host this file on <strong>GitHub Pages</strong> or <strong>Netlify</strong> for live access across devices. Enable <strong>Firebase Realtime Database</strong> or <strong>Supabase</strong> to sync case updates instantly across multiple users — all clerks and advocates see changes in real time without refreshing.
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-save-alert" onclick="saveAlertConfig()">💾 Save Alert Settings</button>
+</div>
+
+<!-- ══ SUMMARY CARDS ══ -->
+<div class="summary-grid">
+  <div class="summary-card sc" onclick="switchTabById('sc')">
+    <div class="summary-court-label">Supreme Court</div>
+    <div class="summary-num" id="scCount">0</div>
+    <div class="summary-name">Active Matters</div>
+    <div class="summary-alert" id="scAlert"></div>
+  </div>
+  <div class="summary-card hc" onclick="switchTabById('hc')">
+    <div class="summary-court-label">High Court</div>
+    <div class="summary-num" id="hcCount">0</div>
+    <div class="summary-name">Active Matters</div>
+    <div class="summary-alert" id="hcAlert"></div>
+  </div>
+  <div class="summary-card lc" onclick="switchTabById('lc')">
+    <div class="summary-court-label">Lower Court</div>
+    <div class="summary-num" id="lcCount">0</div>
+    <div class="summary-name">Active Matters</div>
+    <div class="summary-alert" id="lcAlert"></div>
+  </div>
+  <div class="summary-card tr" onclick="switchTabById('tr')">
+    <div class="summary-court-label">Tribunals</div>
+    <div class="summary-num" id="trCount">0</div>
+    <div class="summary-name">Active Matters</div>
+    <div class="summary-alert" id="trAlert"></div>
+  </div>
+</div>
+
+<!-- ══ COURT TABS ══ -->
+<div class="court-tabs">
+  <button class="court-tab sc-tab active" id="tab-sc" onclick="switchTab('sc', this)">
+    Supreme Court <span class="tab-count" id="scTabCount">0</span>
+  </button>
+  <button class="court-tab hc-tab" id="tab-hc" onclick="switchTab('hc', this)">
+    High Court <span class="tab-count" id="hcTabCount">0</span>
+  </button>
+  <button class="court-tab lc-tab" id="tab-lc" onclick="switchTab('lc', this)">
+    Lower Court <span class="tab-count" id="lcTabCount">0</span>
+  </button>
+  <button class="court-tab tr-tab" id="tab-tr" onclick="switchTab('tr', this)">
+    Tribunals <span class="tab-count" id="trTabCount">0</span>
+  </button>
+</div>
+
+<!-- ══ SC SECTION ══ -->
+<div id="sc-section" class="court-section active">
+  <div class="section-header">
+    <div class="section-title">
+      <div class="court-insignia" style="background:rgba(139,110,212,0.1);border-color:rgba(139,110,212,0.4);color:#b09aea;">⚖</div>
+      <span style="color:#b09aea;">Supreme Court of India</span>
+    </div>
+    <div class="section-actions">
+      <button class="btn" onclick="exportTable('sc')">↓ Export CSV</button>
+      <button class="btn btn-primary" onclick="openModal('sc')">+ Add Matter</button>
+    </div>
+  </div>
+  <div class="table-wrapper">
+    <table id="sc-table">
+      <thead><tr>
+        <th>Sr.</th><th>Case Title / No.</th><th>LDOH</th><th>NDOH</th>
+        <th>Compliance Required</th><th>Due Date</th><th>Status</th><th>Actions</th>
+      </tr></thead>
+      <tbody id="sc-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ HC SECTION ══ -->
+<div id="hc-section" class="court-section">
+  <div class="section-header">
+    <div class="section-title">
+      <div class="court-insignia" style="background:rgba(61,143,204,0.1);border-color:rgba(61,143,204,0.4);color:#7ab8e8;">⚖</div>
+      <span style="color:#7ab8e8;">High Court</span>
+    </div>
+    <div class="section-actions">
+      <button class="btn" onclick="exportTable('hc')">↓ Export CSV</button>
+      <button class="btn btn-primary" onclick="openModal('hc')">+ Add Matter</button>
+    </div>
+  </div>
+  <div class="table-wrapper">
+    <table id="hc-table">
+      <thead><tr>
+        <th>Sr.</th><th>Case Title / No.</th><th>LDOH</th><th>NDOH</th>
+        <th>Compliance Required</th><th>Due Date</th><th>Status</th><th>Actions</th>
+      </tr></thead>
+      <tbody id="hc-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ LC SECTION ══ -->
+<div id="lc-section" class="court-section">
+  <div class="section-header">
+    <div class="section-title">
+      <div class="court-insignia" style="background:rgba(58,138,110,0.1);border-color:rgba(58,138,110,0.4);color:#65c4a0;">⚖</div>
+      <span style="color:#65c4a0;">Lower Courts</span>
+    </div>
+    <div class="section-actions">
+      <button class="btn" onclick="exportTable('lc')">↓ Export CSV</button>
+      <button class="btn btn-primary" onclick="openModal('lc')">+ Add Matter</button>
+    </div>
+  </div>
+  <div class="table-wrapper">
+    <table id="lc-table">
+      <thead><tr>
+        <th>Sr.</th><th>Case Title / No.</th><th>LDOH</th><th>NDOH</th>
+        <th>Compliance Required</th><th>Due Date</th><th>Status</th><th>Actions</th>
+      </tr></thead>
+      <tbody id="lc-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ TR SECTION ══ -->
+<div id="tr-section" class="court-section">
+  <div class="section-header">
+    <div class="section-title">
+      <div class="court-insignia" style="background:rgba(200,117,51,0.1);border-color:rgba(200,117,51,0.4);color:#e8a870;">⚖</div>
+      <span style="color:#e8a870;">Tribunals</span>
+    </div>
+    <div class="section-actions">
+      <button class="btn" onclick="exportTable('tr')">↓ Export CSV</button>
+      <button class="btn btn-primary" onclick="openModal('tr')">+ Add Matter</button>
+    </div>
+  </div>
+  <div class="table-wrapper">
+    <table id="tr-table">
+      <thead><tr>
+        <th>Sr.</th><th>Case Title / No.</th><th>LDOH</th><th>NDOH</th>
+        <th>Compliance Required</th><th>Due Date</th><th>Status</th><th>Actions</th>
+      </tr></thead>
+      <tbody id="tr-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+</div><!-- end .main -->
+
+<!-- ══ ADD/EDIT MODAL ══ -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">Add Matter</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-grid">
+        <div class="form-group" style="grid-column:1/-1">
+          <label>Case Title</label>
+          <input type="text" id="m-title" placeholder="e.g. Rajesh Kumar vs. State of Delhi">
+        </div>
+        <div class="form-group">
+          <label>Case Number</label>
+          <input type="text" id="m-casenum" placeholder="e.g. WP(C)/1042/2026">
+        </div>
+        <div class="form-group">
+          <label>Court / Bench</label>
+          <input type="text" id="m-court" placeholder="e.g. Delhi HC — Div. Bench">
+        </div>
+        <div class="form-group">
+          <label>LDOH (Last Date of Hearing)</label>
+          <input type="text" id="m-ldoh" placeholder="YYYY-MM-DD">
+        </div>
+        <div class="form-group">
+          <label>NDOH (Next Date of Hearing)</label>
+          <input type="text" id="m-ndoh" placeholder="YYYY-MM-DD">
+        </div>
+        <div class="form-group">
+          <label>Due Date (Compliance)</label>
+          <input type="text" id="m-duedate" placeholder="YYYY-MM-DD">
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select id="m-status">
+            <option value="pending">⏳ Pending</option>
+            <option value="complied">✓ Complied</option>
+            <option value="partial">◑ Partial</option>
+            <option value="overdue">⚠ Overdue</option>
+          </select>
+        </div>
+        <div class="form-group" style="grid-column:1/-1">
+          <label>Compliance Required</label>
+          <textarea class="modal-ta" id="m-compliance" placeholder="Describe the compliance action required by the court order..."></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveCase()">Save Matter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ALERTS DRAWER ══ -->
+<div class="alerts-drawer" id="alertsDrawer">
+  <div class="drawer-header">
+    <div class="drawer-title">⚖ Compliance Alerts <span id="alertCount"></span></div>
+    <button class="modal-close" onclick="toggleDrawer()">✕</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</div>
+
+<!-- ══ TOAST ══ -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── State ──
+let data = { sc: [], hc: [], lc: [], tr: [] };
+let alertConfig = { emailEnabled:true, alertEmail:'', ccEmail:'', emailDays:4, waEnabled:true, waNumber:'', waNumber2:'', waDays:4 };
+let currentModal = 'sc', editingIdx = null;
+
+// ── Persistence ──
+function saveData() {
+  localStorage.setItem('jadChambers_data', JSON.stringify(data));
+}
+
+function loadData() {
+  const d = localStorage.getItem('jadChambers_data');
+  if (d) data = JSON.parse(d);
+  const cfg = localStorage.getItem('jadChambers_alertConfig');
+  if (cfg) alertConfig = { ...alertConfig, ...JSON.parse(cfg) };
+  ['alertEmail','ccEmail','waNumber','waNumber2'].forEach(k => {
+    const el = document.getElementById(k);
+    if (el && alertConfig[k]) el.value = alertConfig[k];
+  });
+  ['emailDays','waDays'].forEach(k => {
+    const el = document.getElementById(k);
+    if (el) el.value = alertConfig[k] || 4;
+  });
+  if (document.getElementById('emailEnabled')) document.getElementById('emailEnabled').checked = alertConfig.emailEnabled !== false;
+  if (document.getElementById('waEnabled')) document.getElementById('waEnabled').checked = alertConfig.waEnabled !== false;
+}
+
+function saveAlertConfig() {
+  alertConfig = {
+    emailEnabled: document.getElementById('emailEnabled').checked,
+    alertEmail: document.getElementById('alertEmail').value.trim(),
+    ccEmail: document.getElementById('ccEmail').value.trim(),
+    emailDays: parseInt(document.getElementById('emailDays').value),
+    waEnabled: document.getElementById('waEnabled').checked,
+    waNumber: document.getElementById('waNumber').value.trim(),
+    waNumber2: document.getElementById('waNumber2').value.trim(),
+    waDays: parseInt(document.getElementById('waDays').value)
+  };
+  localStorage.setItem('jadChambers_alertConfig', JSON.stringify(alertConfig));
+  showToast('Settings saved ✓', 'success');
+}
+
+// ── Date helpers ──
+function daysFrom(dateStr) {
+  if (!dateStr) return null;
+  const d = new Date(dateStr);
+  if (isNaN(d)) return null;
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  d.setHours(0,0,0,0);
+  return Math.round((d - today) / 86400000);
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return '—';
+  const d = new Date(dateStr);
+  if (isNaN(d)) return dateStr;
+  return d.toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
+}
+
+function chipClass(diff) {
+  if (diff === null) return 'neutral';
+  if (diff < 0) return 'overdue';
+  if (diff <= 3) return 'soon';
+  return 'ok';
+}
+
+// ── Render ──
+function renderAll() {
+  ['sc','hc','lc','tr'].forEach(key => renderTable(key));
+  updateSummary();
+  renderAlerts();
+}
+
+function renderTable(key) {
+  const tbody = document.getElementById(`${key}-tbody`);
+  if (!tbody) return;
+  if (!data[key].length) {
+    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:30px;color:var(--muted);font-style:italic;font-family:'Cormorant Garamond',serif;">No matters recorded. Add a case to begin.</td></tr>`;
+    document.getElementById(`${key}TabCount`).textContent = 0;
+    return;
+  }
+  document.getElementById(`${key}TabCount`).textContent = data[key].length;
+  tbody.innerHTML = data[key].map((r, i) => {
+    const nd = daysFrom(r.ndoh), dd = daysFrom(r.duedate);
+    const isAlert = (nd !== null && nd >= 0 && nd <= 2) || (dd !== null && dd >= 0 && dd <= 2) || (nd !== null && nd < 0) || (dd !== null && dd < 0);
+    const isWarn = !isAlert && ((nd !== null && nd <= 5) || (dd !== null && dd <= 5));
+    const rowCls = isAlert ? 'alert-row' : (isWarn ? 'alert-row-amber' : '');
+
+    const ndChip = nd === null ? `<span class="date-chip neutral">—</span>` : `<span class="date-chip ${chipClass(nd)}" title="${nd >= 0 ? nd + 'd remaining' : Math.abs(nd) + 'd overdue'}">${formatDate(r.ndoh)}${nd >= 0 && nd <= 7 ? ` · ${nd}d` : ''}</span>`;
+    const ddChip = dd === null ? `<span class="date-chip neutral">—</span>` : `<span class="date-chip ${chipClass(dd)}" title="${dd >= 0 ? dd + 'd remaining' : Math.abs(dd) + 'd overdue'}">${formatDate(r.duedate)}${dd >= 0 && dd <= 7 ? ` · ${dd}d` : ''}</span>`;
+
+    const statusCls = { pending:'status-pending', complied:'status-complied', overdue:'status-overdue', partial:'status-partial' };
+    const statusLabels = { pending:'⏳ Pending', complied:'✓ Complied', overdue:'⚠ Overdue', partial:'◑ Partial' };
+
+    return `<tr class="${rowCls}">
+      <td class="sr-no">${i+1}</td>
+      <td class="case-title">
+        <div class="case-title-main">${r.title || '—'}</div>
+        <div class="case-title-sub">${r.casenum || ''}${r.court ? ' · ' + r.court : ''}</div>
+      </td>
+      <td class="date-cell">${formatDate(r.ldoh)}</td>
+      <td>${ndChip}</td>
+      <td class="compliance-text">${r.compliance || '—'}</td>
+      <td>${ddChip}</td>
+      <td>
+        <select class="status-select ${statusCls[r.status] || ''}" onchange="updateStatus('${key}',${i},this)">
+          <option value="pending" ${r.status==='pending'?'selected':''}>⏳ Pending</option>
+          <option value="complied" ${r.status==='complied'?'selected':''}>✓ Complied</option>
+          <option value="partial" ${r.status==='partial'?'selected':''}>◑ Partial</option>
+          <option value="overdue" ${r.status==='overdue'?'selected':''}>⚠ Overdue</option>
+        </select>
+      </td>
+      <td>
+        <div class="action-btns">
+          <button class="icon-btn" onclick="editCase('${key}',${i})" title="Edit">✏</button>
+          <button class="icon-btn" onclick="sendAlert('${key}',${i},'email')" title="Email Alert">📧</button>
+          <button class="icon-btn" onclick="sendAlert('${key}',${i},'whatsapp')" title="WhatsApp">💬</button>
+          <button class="icon-btn del" onclick="deleteCase('${key}',${i})" title="Delete">🗑</button>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function updateSummary() {
+  ['sc','hc','lc','tr'].forEach(key => {
+    document.getElementById(`${key}Count`).textContent = data[key].length;
+    const alerts = data[key].filter(r => {
+      const nd = daysFrom(r.ndoh), dd = daysFrom(r.duedate);
+      return (nd !== null && nd >= 0 && nd <= 4) || (dd !== null && dd >= 0 && dd <= 4) || (nd !== null && nd < 0) || (dd !== null && dd < 0);
+    }).length;
+    document.getElementById(`${key}Alert`).textContent = alerts ? `${alerts} alert${alerts>1?'s':''}` : '';
+  });
+}
+
+// ── Alerts drawer ──
+function renderAlerts() {
+  const body = document.getElementById('drawerBody');
+  const days = Math.max(alertConfig.emailDays || 4, alertConfig.waDays || 4);
+  let items = [];
+
+  ['sc','hc','lc','tr'].forEach(key => {
+    const label = { sc:'Supreme Court', hc:'High Court', lc:'Lower Court', tr:'Tribunal' }[key];
+    data[key].forEach((row, i) => {
+      const nd = daysFrom(row.ndoh), dd = daysFrom(row.duedate);
+      if (nd !== null && nd >= 0 && nd <= days) items.push({ key, i, row, label, type:'ndoh', diff:nd, date:row.ndoh });
+      else if (nd !== null && nd < 0) items.push({ key, i, row, label, type:'ndoh-overdue', diff:nd, date:row.ndoh });
+      if (dd !== null && dd >= 0 && dd <= days) items.push({ key, i, row, label, type:'due', diff:dd, date:row.duedate });
+      else if (dd !== null && dd < 0) items.push({ key, i, row, label, type:'due-overdue', diff:dd, date:row.duedate });
+    });
+  });
+
+  const alertEl = document.getElementById('alertCount');
+  if (alertEl) alertEl.textContent = `${items.length} Alert${items.length !== 1 ? 's' : ''}`;
+
+  const headerAlertEl = document.querySelectorAll('#alertIndicator span')[0];
+  if (headerAlertEl) headerAlertEl.textContent = `${items.length} Alert${items.length !== 1 ? 's' : ''}`;
+
+  if (!items.length) {
+    body.innerHTML = `<div class="empty-state">✦<br><br>No compliance alerts<br>within ${days} days.<br><br><em style="font-size:0.8rem;color:var(--muted)">All matters are in order.</em></div>`;
+    return;
+  }
+
+  items.sort((a,b) => a.diff - b.diff);
+
+  body.innerHTML = items.map(it => {
+    const isOverdue = it.type.includes('overdue');
+    const isCritical = isOverdue || it.diff <= 1;
+    const typeLabel = it.type.startsWith('ndoh') ? 'NDOH' : 'Due Date';
+    const chipCls = isOverdue ? 'chip-due' : it.diff <= 1 ? 'chip-due' : 'chip-soon';
+    const diffText = isOverdue ? `${Math.abs(it.diff)}d overdue` : it.diff === 0 ? 'TODAY' : `${it.diff}d remaining`;
+
+    return `<div class="alert-item ${isCritical ? 'critical' : 'warning'}">
+      <span class="alert-type-chip ${chipCls}">${typeLabel} · ${diffText}</span>
+      <div class="alert-item-title">${it.row.title || it.row.casenum}</div>
+      <div class="alert-item-meta">${it.label} · ${it.row.casenum || ''}<br>Date: ${formatDate(it.date)}<br>${it.row.compliance || ''}</div>
+      <div class="send-btns">
+        <button class="btn-send email" onclick="sendAlert('${it.key}',${it.i},'email')">📧 Email</button>
+        <button class="btn-send whatsapp" onclick="sendAlert('${it.key}',${it.i},'whatsapp')">💬 WhatsApp</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── Send alert ──
+function buildMessage(key, idx) {
+  const row = data[key][idx];
+  const courtLabel = { sc:'Supreme Court', hc:'High Court', lc:'Lower Court', tr:'Tribunal' }[key];
+  return `⚖ Law Chambers of Jai Anant Dehadrai\nCompliance Alert\n\nCourt: ${courtLabel}\nCase: ${row.title || ''} (${row.casenum || ''})\nLast Date of Hearing: ${formatDate(row.ldoh)}\nNext Date of Hearing: ${formatDate(row.ndoh)}\nCompliance Required: ${row.compliance || 'N/A'}\nDue Date: ${formatDate(row.duedate)}\nStatus: ${row.status?.toUpperCase() || 'PENDING'}\n\nPlease ensure compliance before the due date.\n\n— Chambers of Jai Anant Dehadrai, Advocate`;
+}
+
+function sendAlert(key, idx, channel) {
+  const msg = buildMessage(key, idx);
+  const row = data[key][idx];
+
+  if (channel === 'email') {
+    const to = alertConfig.alertEmail || '';
+    const cc = alertConfig.ccEmail ? `&cc=${encodeURIComponent(alertConfig.ccEmail)}` : '';
+    const subject = encodeURIComponent(`[JAD Chambers] Compliance Alert — ${row.casenum || row.title}`);
+    const body = encodeURIComponent(msg);
+    window.open(`mailto:${to}?subject=${subject}${cc}&body=${body}`);
+    showToast('Email draft opened ✓', 'success');
+  } else {
+    const num = (alertConfig.waNumber || '').replace(/\D/g,'');
+    window.open(`https://wa.me/${num}?text=${encodeURIComponent(msg)}`, '_blank');
+    showToast('WhatsApp opened ✓', 'success');
+  }
+}
+
+// ── CRUD ──
+function openModal(key, idx=null) {
+  currentModal = key;
+  editingIdx = idx;
+  const courtLabel = { sc:'Supreme Court', hc:'High Court', lc:'Lower Court', tr:'Tribunals' }[key];
+  document.getElementById('modalTitle').textContent = (idx !== null ? 'Edit Matter' : 'Add Matter') + ` — ${courtLabel}`;
+
+  if (idx !== null) {
+    const r = data[key][idx];
+    document.getElementById('m-title').value = r.title || '';
+    document.getElementById('m-casenum').value = r.casenum || '';
+    document.getElementById('m-court').value = r.court || '';
+    document.getElementById('m-ldoh').value = r.ldoh || '';
+    document.getElementById('m-ndoh').value = r.ndoh || '';
+    document.getElementById('m-compliance').value = r.compliance || '';
+    document.getElementById('m-duedate').value = r.duedate || '';
+    document.getElementById('m-status').value = r.status || 'pending';
+  } else {
+    ['m-title','m-casenum','m-court','m-ldoh','m-ndoh','m-compliance','m-duedate'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('m-status').value = 'pending';
+  }
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  editingIdx = null;
+}
+
+function saveCase() {
+  const row = {
+    title: document.getElementById('m-title').value.trim(),
+    casenum: document.getElementById('m-casenum').value.trim(),
+    court: document.getElementById('m-court').value.trim(),
+    ldoh: document.getElementById('m-ldoh').value.trim(),
+    ndoh: document.getElementById('m-ndoh').value.trim(),
+    compliance: document.getElementById('m-compliance').value.trim(),
+    duedate: document.getElementById('m-duedate').value.trim(),
+    status: document.getElementById('m-status').value
+  };
+
+  if (!row.title && !row.casenum) { showToast('Please enter a case title or number', 'error'); return; }
+
+  if (editingIdx !== null) {
+    data[currentModal][editingIdx] = row;
+  } else {
+    data[currentModal].push(row);
+  }
+
+  saveData();
+  renderAll();
+  closeModal();
+  showToast('Matter saved ✓', 'success');
+}
+
+function editCase(key, idx) { openModal(key, idx); }
+
+function deleteCase(key, idx) {
+  if (!confirm('Delete this matter from the record?')) return;
+  data[key].splice(idx, 1);
+  saveData();
+  renderAll();
+  showToast('Matter removed', '');
+}
+
+function updateStatus(key, idx, sel) {
+  data[key][idx].status = sel.value;
+  const cls = { pending:'status-pending', complied:'status-complied', overdue:'status-overdue', partial:'status-partial' };
+  sel.className = 'status-select ' + (cls[sel.value] || '');
+  saveData();
+  updateSummary();
+}
+
+// ── Tab switch ──
+function switchTab(key, btn) {
+  document.querySelectorAll('.court-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.court-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(`${key}-section`).classList.add('active');
+  btn.classList.add('active');
+}
+
+function switchTabById(key) {
+  const btn = document.getElementById(`tab-${key}`);
+  if (btn) switchTab(key, btn);
+}
+
+// ── Export ──
+function exportTable(key) {
+  const rows = data[key];
+  if (!rows.length) { showToast('No data to export', 'error'); return; }
+  const header = 'Sr,Case Title,Case No,Court,LDOH,NDOH,Compliance Required,Due Date,Status\n';
+  const csv = header + rows.map((r,i) => [
+    i+1, `"${r.title||''}"`, `"${r.casenum||''}"`, `"${r.court||''}"`,
+    r.ldoh||'', r.ndoh||'', `"${(r.compliance||'').replace(/"/g,'""')}"`, r.duedate||'', r.status||''
+  ].join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv'}));
+  a.download = `JAD_Chambers_${key}_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  showToast('CSV exported ✓', 'success');
+}
+
+// ── UI helpers ──
+function toggleAlertPanel() {
+  document.getElementById('alertPanel').classList.toggle('open');
+}
+
+function toggleDrawer() {
+  document.getElementById('alertsDrawer').classList.toggle('open');
+  renderAlerts();
+}
+
+function showToast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = `toast ${type} show`;
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── Seed existing data ──
+function seedExistingData() {
+  if (data.sc.length || data.hc.length || data.lc.length || data.tr.length) return;
+
+  data.sc = [
+    { title:'Ram Pravesh', casenum:'', court:'delhi', ldoh:'2026-03-05', ndoh:'2026-04-05', compliance:'file affidavit', duedate:'2026-04-05', status:'pending' },
+    { title:'PHALODI ACCIDENT V/s NHAI', casenum:'SUO MOTO WP (C) – 9 / 2025', court:'SC', ldoh:'2026-03-24', ndoh:'', compliance:'', duedate:'', status:'complied' },
+    { title:'ASHISH GUPTA V/s THE STATE OF UTTAR PRADESH', casenum:'SLP (C) – 25758 / 2024', court:'SC', ldoh:'', ndoh:'', compliance:'', duedate:'', status:'pending' },
+    { title:'RUCHITA V VIBHUNARAYAN KHANNA VS RAHUL CHAMANLAL KACHROO', casenum:'TRANSFER PETITION (CIVIL) 1950/2025', court:'SC', ldoh:'2026-03-18', ndoh:'2026-04-01', compliance:'', duedate:'', status:'complied' }
+  ];
+
+  data.hc = [
+    { title:'GAUTAM GAMBHIR V/s ASHOK KUMAR/JOHN DOE & ORS.', casenum:'CS(COMM)-287/2026', court:'jyoti singh', ldoh:'2026-03-25', ndoh:'2026-04-25', compliance:'Plaintiff shall comply with the provisions of Order XXXIX Rule 3 CPC within a period of two weeks from today.', duedate:'2026-04-25', status:'pending' },
+    { title:'SMT. NALINI MISRA V/s UNION OF INDIA & ORS', casenum:'W.P. (C) – 1466 / 2026', court:'DHC', ldoh:'', ndoh:'2026-05-14', compliance:'Order not updated on website', duedate:'2026-05-14', status:'partial' },
+    { title:'DIRECTORATE OF ENFORCEMENT V/s AJIT SINGH BUBBER', casenum:'CRL M.C. – 2720 / 2021', court:'DHC', ldoh:'2026-03-25', ndoh:'2026-04-29', compliance:'ASG for the ED and CBI seeks, and is granted, a period of one week for filing written synopsis in compliance of earlier order.', duedate:'2026-04-29', status:'complied' },
+    { title:'CENTRAL BUREAU OF INVESTIGATION V/s AJIT SINGH BUBBER & ANR.', casenum:'CRL.M.C.-3249 / 2021', court:'DHC', ldoh:'2026-03-25', ndoh:'2026-04-29', compliance:'ASG for the ED and CBI seeks, and is granted, a period of one week for filing written synopsis in compliance of earlier order.', duedate:'2026-04-29', status:'complied' },
+    { title:'TARUN SING SAHARAN VS MEETA SINGH & ORS.', casenum:'CS(OS) 252/2022', court:'DHC', ldoh:'2026-03-12', ndoh:'2026-08-04', compliance:'Mediation has failed. List applications being I.A. 35864/2024, I.A. 35920/2024, I.A. 765/2025, I.A. 30942/2025 and I.A. 33696/2024 on 08.04.2026 at 04:00 PM for final disposal.', duedate:'2026-08-04', status:'pending' },
+    { title:'SHRI AJIT SINGH BUBBER & ANR. V/s CENTRAL BUREAU OF INVESTIGATION', casenum:'CRL.REV.P.-132 / 2022', court:'DHC', ldoh:'2026-03-25', ndoh:'2026-04-29', compliance:'ASG for the ED and CBI seeks, and is granted, a period of one week for filing written synopsis in compliance of earlier order.', duedate:'2026-04-29', status:'pending' },
+    { title:'NIPUN KUMAR MALHOTRA VS. UOI & ORS.', casenum:'W.P.(C) 3933/2018', court:'DHC', ldoh:'', ndoh:'', compliance:'Orders not updated on website', duedate:'', status:'pending' },
+    { title:'M V/s STATE OF NCT OF DELHI & ANR.', casenum:'CRL M.C. – 6784 / 2025', court:'DHC', ldoh:'2026-03-24', ndoh:'', compliance:'—', duedate:'', status:'complied' },
+    { title:'M V/s STATE OF NCT OF DELHI & ANR.', casenum:'CRL M.C. – 6803 / 2025', court:'DHC', ldoh:'2026-03-24', ndoh:'', compliance:'—', duedate:'', status:'pending' },
+    { title:'Union of India vs. Sharma Industries', casenum:'SLP(C)/4021/2026', court:'SC — 3 Judge Bench', ldoh:'2026-03-10', ndoh:'2026-04-01', compliance:'File counter affidavit; serve copy on respondent', duedate:'2026-03-30', status:'pending' },
+    { title:'Mehta & Sons vs. CBI', casenum:'Crl.A./512/2026', court:'SC — Div. Bench', ldoh:'2026-02-28', ndoh:'2026-04-15', compliance:'Deposit security amount Rs. 2,00,000 in Registry', duedate:'2026-04-05', status:'partial' }
+  ];
+
+  data.lc = [
+    { title:'Anita Devi vs. Ramesh Lal', casenum:'CS/210/2026', court:'Saket District Court', ldoh:'2026-03-18', ndoh:'2026-03-31', compliance:'Produce original documents; examination of PW-1', duedate:'2026-03-31', status:'pending' },
+    { title:'State vs. Vikas Gupta', casenum:'SC/44/2026', court:'Patiala House Courts', ldoh:'2026-02-20', ndoh:'2026-04-08', compliance:'None — Next date for arguments', duedate:'', status:'pending' },
+    { title:'SMT. NALINI MISRA V/s UNION OF INDIA & ORS', casenum:'W.P. (C) – 1466 / 2026', court:'DHC', ldoh:'', ndoh:'', compliance:'Last order not updated', duedate:'', status:'complied' }
+  ];
+
+  data.tr = [
+    { title:'ABC Pvt Ltd vs. Income Tax Dept', casenum:'ITA/301/Del/2026', court:'ITAT Delhi', ldoh:'2026-03-01', ndoh:'2026-04-10', compliance:'File paper book; additional written submissions', duedate:'2026-04-05', status:'pending' },
+    { title:'Sharma vs. Employer — PF Dispute', casenum:'PF/Claim/22/2026', court:'EPF Appellate Tribunal', ldoh:'2026-03-20', ndoh:'2026-04-22', compliance:'Deposit disputed PF amount in escrow', duedate:'2026-04-15', status:'partial' }
+  ];
+
+  saveData();
+}
+
+// ── Init ──
+loadData();
+seedExistingData();
+renderAll();
+</script>
+</body>
+</html>
