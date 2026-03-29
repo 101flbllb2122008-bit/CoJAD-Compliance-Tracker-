@@ -1,0 +1,46 @@
+name: Daily Compliance Alert — JAD Chambers
+
+on:
+  schedule:
+    # Runs every day at 8:00 AM IST (2:30 AM UTC)
+    - cron: '30 2 * * *'
+  workflow_dispatch:  # Allow manual trigger from GitHub Actions UI
+
+jobs:
+  send-alerts:
+    runs-on: ubuntu-latest
+    name: Check Compliance Deadlines & Send Alerts
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: |
+          cd scripts
+          npm install
+
+      - name: Run Alert Script
+        env:
+          # ── Set these in GitHub → Settings → Secrets and variables → Actions ──
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}           # e.g. smtp.gmail.com
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}           # e.g. 587
+          SMTP_USER: ${{ secrets.SMTP_USER }}           # your email address
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}           # app password (not your login password)
+          ALERT_TO:  ${{ secrets.ALERT_TO }}            # recipient email
+          ALERT_CC:  ${{ secrets.ALERT_CC }}            # cc email (optional)
+          ALERT_DAYS: ${{ secrets.ALERT_DAYS || '4' }}  # days before to alert
+        run: node scripts/send-alerts.js
+
+      - name: Upload Alert Log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alert-log-${{ github.run_number }}
+          path: scripts/alert.log
+          retention-days: 30
